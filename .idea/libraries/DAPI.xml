@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="DAPI">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../DAPI/out/artifacts/DAPI/DAPI.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

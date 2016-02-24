@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="SmallUtils">
-    <output-path>$PROJECT_DIR$/out/artifacts/SmallUtils</output-path>
-    <root id="archive" name="SmallUtils.jar">
-      <element id="module-output" name="SmallUtils" />
-    </root>
-  </artifact>
-</component>
