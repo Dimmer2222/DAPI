@@ -1,0 +1,61 @@
+﻿name: SmallUtils
+version: 0.1.13.1
+main: com.Dimmer2222.small.Main
+
+
+commands:
+
+   Wartungen:
+     description: Schaltet Wartungen ein.
+     usage: /Wartungen
+     permission: SmallUtils.wartungen
+     
+   JoinEffects: 
+     description: Schaltet aus/ein das man Effecte beim Joinen bekommen soll.
+     usage: /JoinEffects
+     permission: SmallUtils.joineffects
+   
+   suwarp:
+     description: Warpt dich zu einen Warp oder zeigt dir alle an.
+     usage: /spwarp (WarpName)
+     permission: SmallUtils.Warp
+     
+   susetwarp:
+     description: Erstellt einen Warp
+     usage: /susetwarp WarpName
+     permission: SmallUtils.Warp.set
+       
+   sudelwarp:
+     description: Loescht einen Warp.
+     usage: /sudelwarp WarpName
+     permission: SmallUtils.warp.del
+
+   SmallUtils:
+    description: Main-Command
+    usage: /SmallUtils reload | updateNotes | version
+    permission: SmallUtils.SmallPlugin
+    aliases: su
+
+   clearChat:
+    description: Löscht deinen Chat oder von Mitspielern.
+    usage: /clearChat (zielSpieler)
+    permission: SmallUtils.clearChat
+
+   Support:
+    description: Löscht deinen Chat oder von Mitspielern.
+    usage: /clearChat (zielSpieler)
+    permission: SmallUtils.Support
+
+   delSupport:
+    description: Löscht deinen Chat oder von Mitspielern.
+    usage: /clearChat (zielSpieler)
+    permission: SmallUtils.Support
+
+   leaveSupport:
+    description: Löscht deinen Chat oder von Mitspielern.
+    usage: /clearChat (zielSpieler)
+    permission: SmallUtils.Support
+
+
+
+
