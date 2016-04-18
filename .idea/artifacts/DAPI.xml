@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="DAPI">
-    <output-path>$PROJECT_DIR$/../build/DAPI/out/artifacts/</output-path>
-    <root id="archive" name="DAPI.jar">
-      <element id="module-output" name="DAPI" />
-    </root>
-  </artifact>
-</component>
