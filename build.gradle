@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+version = '0.1.14'
 
 ext{
 
@@ -12,6 +13,15 @@ ext{
 dependencies{
     compile "org.bukkit:bukkit:$bukkitVersion"
 }
+
+uploadArchives{
+	repositories {
+		flatDir { dirs "build/repo/" }
+	}
+}
+
+
+build.dependsOn.add('uploadArchives')
 
 repositories {
     mavenCentral()
