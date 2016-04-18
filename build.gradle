@@ -22,8 +22,6 @@ uploadArchives{
 }
 
 
-build.dependsOn.add('uploadArchives')
-
 repositories {
     mavenCentral()
     maven {
