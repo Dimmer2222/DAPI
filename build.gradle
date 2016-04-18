@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+
+ext{
+
+    bukkitVersion = "1.8.8-R0.1-SNAPSHOT"
+
+}
+
+dependencies{
+    compile "org.bukkit:bukkit:$bukkitVersion"
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots'
+    }
+}
