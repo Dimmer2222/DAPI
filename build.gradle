@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
+group = 'com.Dimmer2222.DAPI'
 version = '0.1.14'
 
 ext{
