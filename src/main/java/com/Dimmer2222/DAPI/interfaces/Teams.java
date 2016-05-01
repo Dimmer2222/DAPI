@@ -12,33 +12,47 @@ public interface Teams {
 
 
     /**
-     * Methode zum erstellen eines Teams
-     * @param PlayerUUID UUID des Gründers
-     * @param TeamName Angabe von dem Namen des Teams
-     * @throws CoreException Exception wird geworfen wenn du schon in einem Team bist
+     * Method to create a Team
+     * @param PlayerUUID UUID of the Team Creator
+     * @param TeamName Name of the Team
+     * @throws CoreException Will be thrown when you are in a Team or the Team exist already
      */
+
     void createTeam(UUID PlayerUUID, String TeamName) throws CoreException;
 
     /**
-     * Methode zum Joinen eines Teams
-     * @param PlayerUUID UUID des Spielers das Einem Team joinen will
-     * @param TeamName Name des Teams
-     * @throws TeamError Wird geworfen wenn das Team nicht gefunden werden kann
-     * @throws CoreException Wird geworfen wenn du schon in einem Team bist
-     */
-
-    /**
-     * @param PlayerUUID
-     * @param TeamName
-     * @throws TeamError
-     * @throws CoreException
+     * Method to join a Teams
+     * @param PlayerUUID UUID from the Player
+     * @param TeamName Name of the Team
+     * @throws TeamError It will be thrown than the Team don't exist
+     * @throws CoreException It will be thrown than you are in a Team
      */
 
     void joinTeam(UUID PlayerUUID, String TeamName) throws TeamError, CoreException;
 
+    /**
+     * Method to delete a Team
+     * @param TeamName Name of the Team
+     * @throws TeamError Will be thrown than the Team don't exist.
+     */
+
     void deleteTeam(String TeamName) throws TeamError;
 
+    /**
+     * Method to let a Player leave a Team
+     * @param PlayerUUID Name of the UUID from the Player
+     * @param TeamName Name of the Team
+     * @throws TeamError It will be thrown than the Player don't have a Team
+     */
+
     void leaveTeam(UUID PlayerUUID, String TeamName) throws TeamError;
+
+    /**
+     * Method to get the Team from a Player
+     * @param PlayerUUID PlayerUUID of a Player
+     * @return The Team of a Player
+     * @throws TeamError It will be thrown than the Player don't have a Team.
+     */
 
     String getTeam(UUID PlayerUUID) throws TeamError;
 }

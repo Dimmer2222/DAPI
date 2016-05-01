@@ -6,7 +6,7 @@ package com.Dimmer2222.DAPI.exceptions;
 
 /**
  *
- * Dies ist die HauptException in diesem Plugin.
+ * This is the Main-Exception of this Plugin.
  *
  */
 public class CoreException extends Exception {}

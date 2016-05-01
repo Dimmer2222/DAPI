@@ -32,6 +32,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/*
+Beta!
+ */
+
+/**
+ * @see Teams
+ */
+
 public class TeamManager implements Teams{
 
     private YamlConfiguration teamconfig;
@@ -49,6 +57,9 @@ public class TeamManager implements Teams{
     @Override
     public void createTeam(UUID PlayerUUID, String TeamName) throws CoreException{
         save(false);
+        if(this.getTeam(PlayerUUID) != null){
+            throw new CoreException();
+        }
         if(teamconfig.get("Team.TeamName." + TeamName) == null) {
             teamconfig.set("Team.TeamName." + TeamName, TeamName);
             save(true);
@@ -121,6 +132,11 @@ public class TeamManager implements Teams{
             }
         return null;
     }
+
+    /**
+     * This Method is to save and to generate a new File then no one exist.
+     * @param b Disable saving and generate a new File when no File exist by false, by true saving + checking if file exist
+     */
 
     private void save(boolean b) {
         try {

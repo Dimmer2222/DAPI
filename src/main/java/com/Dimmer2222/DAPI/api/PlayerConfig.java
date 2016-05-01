@@ -35,8 +35,8 @@ SOFTWARE.
 
 	public class PlayerConfig {
 
-		File file;
-		YamlConfiguration config;
+		private File file;
+		private YamlConfiguration config;
 
 		public PlayerConfig(String FilePath, String FileName) {
 			file = new File(FilePath, FileName);

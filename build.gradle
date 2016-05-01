@@ -2,29 +2,39 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
-group = 'com.Dimmer2222.DAPI'
-version = '0.1.14'
 
 ext{
 
     bukkitVersion = "1.8.8-R0.1-SNAPSHOT"
-
-}
-
-dependencies{
-    compile "org.bukkit:bukkit:$bukkitVersion"
-}
-
-uploadArchives{
-	repositories {
-		flatDir { dirs "build/repo/" }
-	}
+    junitVersion = "4.12"
+    reflectionsVersion = "0.9.10"
 }
 
 
-repositories {
-    mavenCentral()
-    maven {
-        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots'
+
+    group = 'com.Dimmer2222.DAPI'
+    version = '0.2-devBuild13'
+
+
+    dependencies {
+        compile "org.bukkit:bukkit:$bukkitVersion"
+        compile "org.reflections:reflections:$reflectionsVersion"
+
     }
-}
+
+
+
+    uploadArchives {
+        repositories {
+            flatDir { dirs "build/repo/" }
+        }
+    }
+
+
+
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots'
+        }
+    }

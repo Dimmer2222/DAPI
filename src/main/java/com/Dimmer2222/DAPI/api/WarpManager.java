@@ -39,21 +39,12 @@ public class WarpManager {
 	File file;
 	YamlConfiguration config;
 
-	/**
-	 * @param filepath
-	 * @param filename
-     */
 
 	public WarpManager(String filepath, String filename) {
 		file = new File(filepath, filename);
 		config = YamlConfiguration.loadConfiguration(file);
 	}
 
-	/**
-	 * @param WarpName
-	 * @param location
-	 * @throws CoreException Ist die Exception die Minimal geworfen werden muss wenn ein Fehler auftritt.
-     */
 	public void createWarp(String WarpName, Location location) throws ConfigNotSetException{
 		save(false);
 		WarpName = WarpName.toLowerCase();

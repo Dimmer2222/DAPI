@@ -32,11 +32,13 @@ SOFTWARE.
 public class BukkitEasier {
 
     /**
-     * Schnell Befehle Registrieren
+     * In a couple of Seconds register Commands.
      *
-     * @param jp      JavaPlugin
-     * @param command Name des Befehls
-     * @param ce      CommandExcetor
+     * @param jp      The Name of the JavaPlugin Class(Main Class)
+     * @see JavaPlugin
+     * @param command Name of the Command
+     * @param ce      CommandExecutor
+     * @see CommandExecutor
      */
 
     public static void registerCommand(JavaPlugin jp, String command, CommandExecutor ce) {
@@ -45,7 +47,7 @@ public class BukkitEasier {
     }
 
     /**
-     * Schnell Events Registrieren
+     * In a couple of Seconds register Event.
      *
      * @param jp JavaPlugin
      * @param l  Listener
