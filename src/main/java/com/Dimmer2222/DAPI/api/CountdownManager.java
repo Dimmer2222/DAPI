@@ -1,12 +1,12 @@
 package com.Dimmer2222.DAPI.api;
 
 /*
-<<<<<<< HEAD
-New
- */
 
-=======
-The MIT License (MIT)
+New
+
+*/
+
+/*The MIT License (MIT)
 
 Copyright (c) 2016 Dimmer2222
 
@@ -28,8 +28,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-@Deprecated
->>>>>>> 03af3c36c3c3a0ccde86287d6e85475824e79fb2
+
 public class CountdownManager {
 
 
