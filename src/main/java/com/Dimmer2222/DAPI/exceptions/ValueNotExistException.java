@@ -1,7 +1,4 @@
-package com.Dimmer2222.DAPI;
-
-import com.Dimmer2222.DAPI.api.CountdownManager;
-import org.bukkit.Bukkit;
+package com.Dimmer2222.DAPI.exceptions;
 
 /*
 The MIT License (MIT)
@@ -27,20 +24,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public class DAPI {
-
-    private static CountdownManager cm = new CountdownManager();
-
-    public static boolean isDAPIInstalled(){
-        if(Bukkit.getServer().getPluginManager().getPlugin("DAPI") != null){
-            return true;
-        }
-        return false;
-    }
-
-    public static CountdownManager getCountdownManager(){
-        return DAPI.cm;
-    }
-
-
+public class ValueNotExistException extends CoreException{
 }

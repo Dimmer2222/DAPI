@@ -5,7 +5,8 @@ import com.Dimmer2222.DAPI.exceptions.TeamError;
 
 import java.util.UUID;
 
-/*The MIT License (MIT)
+/*
+The MIT License (MIT)
 
 Copyright (c) 2016 Dimmer2222
 

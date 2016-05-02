@@ -2,7 +2,8 @@ package com.Dimmer2222.DAPI.interfaces;
 
 import org.bukkit.Location;
 
-/*The MIT License (MIT)
+/*
+The MIT License (MIT)
 
 Copyright (c) 2016 Dimmer2222
 

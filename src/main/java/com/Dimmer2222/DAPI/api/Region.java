@@ -7,7 +7,8 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/*The MIT License (MIT)
+/*
+The MIT License (MIT)
 
 Copyright (c) 2016 Dimmer2222
 
