@@ -72,6 +72,7 @@ public class WorldManager implements WorldGenerator {
     public void setup(){
 
     }
+
     @Override
     public Set<String> getWorlds() throws WorldError{
         Set<String> worlds = new HashSet<>();
@@ -92,6 +93,12 @@ public class WorldManager implements WorldGenerator {
         }else{
             throw new WorldError();
         }
+
+
+        for(String world : getWorlds()){
+            if(world.equalsIgnoreCase(worldName))
+            return Bukkit.getWorld(world).getPVP();
+        }
         return false;
     }
 
@@ -101,44 +108,127 @@ public class WorldManager implements WorldGenerator {
            throw new WorldError();
         }
 
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    return Bukkit.getWorld(worldName.toLowerCase()).getSpawnLocation();
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
         return null;
+
     }
 
     @Override
     public File getWorldFolder(String worldName){
-        return (File) config.get("World.WorldName." + worldName.toLowerCase() + ".worldFolder");
+        return new File((String) config.get("World.WorldName." + worldName.toLowerCase() + ".worldFolder"));
     }
 
     public boolean isAnimals(String worldName){
+        try{
+        for(String world : getWorlds()){
+            if(world.equalsIgnoreCase(worldName))
+                return Bukkit.getWorld(worldName.toLowerCase()).getAllowAnimals();
+        }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
         return false;
     }
 
     public boolean isMonsters(String worldName){
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    return Bukkit.getWorld(worldName.toLowerCase()).getAllowMonsters();
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
         return false;
     }
 
     public Difficulty getDifficulty(String worldName){
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    return Bukkit.getWorld(worldName.toLowerCase()).getDifficulty();
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     public WorldType getWorldType(String worldName){
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    return Bukkit.getWorld(worldName.toLowerCase()).getWorldType();
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
         return null;
     }
 
-    public World.Environment getEnvironment(String worldName){
+    public World.Environment getEnvironment(String worldName) {
+
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    return Bukkit.getWorld(worldName.toLowerCase()).getEnvironment();
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
+
         return null;
     }
 
     public void setPvP(String worldName, boolean PvP){
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    Bukkit.getWorld(worldName.toLowerCase()).setPVP(PvP);
+            }
 
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
     }
 
     public void setSpawnLocation(String worldName, Location loc){
 
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    Bukkit.getWorld(worldName.toLowerCase()).setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+            }
+
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
+
     }
 
     public void setAnimals(String worldName ,boolean active){
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    Bukkit.getWorld(worldName.toLowerCase()).setSpawnFlags(config.getBoolean(""), active);
+            }
 
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
     }
 
     public void setMonster(String worldName ,boolean active){

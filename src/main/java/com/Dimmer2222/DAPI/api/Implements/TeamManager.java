@@ -55,30 +55,27 @@ public class TeamManager implements Teams{
 
 
     @Override
-    public void createTeam(UUID PlayerUUID, String TeamName) throws CoreException{
+    public void createTeam(UUID PlayerUUID, String TeamName) throws TeamError {
         save(false);
-        if(this.getTeam(PlayerUUID) != null){
-            throw new CoreException();
-        }
         if(teamconfig.get("Team.TeamName." + TeamName) == null) {
             teamconfig.set("Team.TeamName." + TeamName, TeamName);
             save(true);
             try {
                 joinTeam(PlayerUUID, TeamName);
-            } catch (TeamError | CoreException e) {
+            } catch (TeamError e) {
                 e.printStackTrace();
             }
         }else{
-            throw new CoreException();
+            throw new TeamError();
         }
     }
 
     @Override
-    public void joinTeam(UUID PlayerUUID, String TeamName) throws TeamError, CoreException{
+    public void joinTeam(UUID PlayerUUID, String TeamName) throws TeamError{
         save(false);
         if(teamconfig.getString("Team.TeamName." + TeamName) != null){
-            if(this.getTeam(PlayerUUID) != null){
-                throw new CoreException();
+            if(teamconfig.get("Team.TeamName." + TeamName + ".PlayerUUID." + PlayerUUID) != null){
+                throw new TeamError();
             }
                 teamconfig.set("Team.TeamName." + TeamName + ".PlayerUUID." + PlayerUUID, String.valueOf(PlayerUUID));
                 save(true);
