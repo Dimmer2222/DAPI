@@ -49,7 +49,7 @@ public class WorldManager implements WorldGenerator {
 
     @Override
     public void generateWorld(String worldName, World.Environment environment, WorldType worldType) throws WorldError{
-
+        save(false);
         if(config.get("World.WorldName." + worldName.toLowerCase()) != null){
             throw new WorldError();
         }
@@ -65,16 +65,13 @@ public class WorldManager implements WorldGenerator {
         config.set("World.WorldName." + worldName.toLowerCase() + ".properties.difficulty", Bukkit.getWorld(worldName).getDifficulty());
         config.set("World.WorldName." + worldName.toLowerCase() + ".properties.type", Bukkit.getWorld(worldName).getWorldType());
         config.set("World.WorldName." + worldName.toLowerCase() + ".properties.environment", Bukkit.getWorld(worldName).getEnvironment());
-        config.set("World.WorldName." + worldName.toLowerCase() + "world.enabled", true);
         save(true);
     }
 
-    public void setup(){
-
-    }
 
     @Override
     public Set<String> getWorlds() throws WorldError{
+        save(false);
         Set<String> worlds = new HashSet<>();
         if(config.getConfigurationSection("World.WorldName").getKeys(false).isEmpty()){
             throw new WorldError();
@@ -88,6 +85,7 @@ public class WorldManager implements WorldGenerator {
 
     @Override
     public boolean isPvP(String worldName) throws WorldError{
+        save(false);
         if(getWorlds().contains(worldName.toLowerCase())){
 
         }else{
@@ -104,6 +102,7 @@ public class WorldManager implements WorldGenerator {
 
     @Override
     public Location getSpawnLocation(String worldName) throws WorldError{
+        save(false);
         if(getWorlds().contains(worldName.toLowerCase())){
            throw new WorldError();
         }
@@ -123,10 +122,12 @@ public class WorldManager implements WorldGenerator {
 
     @Override
     public File getWorldFolder(String worldName){
-        return new File((String) config.get("World.WorldName." + worldName.toLowerCase() + ".worldFolder"));
+        save(false);
+        return new File(config.getString("World.WorldName." + worldName.toLowerCase() + ".worldFolder"));
     }
 
     public boolean isAnimals(String worldName){
+        save(false);
         try{
         for(String world : getWorlds()){
             if(world.equalsIgnoreCase(worldName))
@@ -140,6 +141,7 @@ public class WorldManager implements WorldGenerator {
     }
 
     public boolean isMonsters(String worldName){
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
@@ -149,10 +151,12 @@ public class WorldManager implements WorldGenerator {
         }catch (WorldError e){
             e.printStackTrace();
         }
+
         return false;
     }
 
     public Difficulty getDifficulty(String worldName){
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
@@ -166,6 +170,7 @@ public class WorldManager implements WorldGenerator {
     }
 
     public WorldType getWorldType(String worldName){
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
@@ -179,6 +184,7 @@ public class WorldManager implements WorldGenerator {
     }
 
     public World.Environment getEnvironment(String worldName) {
+        save(false);
 
         try{
             for(String world : getWorlds()){
@@ -194,74 +200,89 @@ public class WorldManager implements WorldGenerator {
     }
 
     public void setPvP(String worldName, boolean PvP){
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
                     Bukkit.getWorld(worldName.toLowerCase()).setPVP(PvP);
+                config.set("World.WorldName." + worldName.toLowerCase() + ".properties.pvp", PvP);
             }
 
         }catch (WorldError e){
             e.printStackTrace();
         }
+        save(true);
     }
 
     public void setSpawnLocation(String worldName, Location loc){
-
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
                     Bukkit.getWorld(worldName.toLowerCase()).setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+                     config.set("World.WorldName." + worldName.toLowerCase() + ".spawn", new Location(Bukkit.getWorld(worldName.toLowerCase()) ,loc.getX(), loc.getY(), loc.getZ()).serialize());
+
             }
 
         }catch (WorldError e){
             e.printStackTrace();
         }
+
+        save(true);
 
     }
 
     public void setAnimals(String worldName ,boolean active){
+        save(false);
         try{
             for(String world : getWorlds()){
                 if(world.equalsIgnoreCase(worldName))
-                    Bukkit.getWorld(worldName.toLowerCase()).setSpawnFlags(config.getBoolean(""), active);
+                    Bukkit.getWorld(worldName.toLowerCase()).setSpawnFlags(config.getBoolean("World.WorldName." + worldName.toLowerCase() + "properties.monster"), active);
+                config.set("World.WorldName." + worldName.toLowerCase() + ".properties.animals", active);
+
             }
 
         }catch (WorldError e){
             e.printStackTrace();
         }
+        save(true);
     }
 
     public void setMonster(String worldName ,boolean active){
+        save(false);
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    Bukkit.getWorld(worldName.toLowerCase()).setSpawnFlags(active ,config.getBoolean("World.WorldName." + worldName.toLowerCase() + "properties.animals"));
+                config.set("World.WorldName." + worldName.toLowerCase() + ".properties.monster", active);
+            }
 
+        }catch (WorldError e){
+            e.printStackTrace();
+        }
+        save(true);
     }
 
     public void setDifficulty(String worldName ,Difficulty diff){
+        save(false);
+        try{
+            for(String world : getWorlds()){
+                if(world.equalsIgnoreCase(worldName))
+                    Bukkit.getWorld(worldName.toLowerCase()).setDifficulty(diff);
+                config.set("World.WorldName." + worldName.toLowerCase() + ".properties.difficulty", diff);
 
-    }
-
-    public void setWorldType(String worldName, WorldType worldType){
-
-    }
-
-    public void setEnvironment(String worldName, World.Environment environment){
-
-    }
-
-    @Override
-    public void loadWorlds() {
-        for(String name : config.getConfigurationSection("World.WorldName").getKeys(false)){
-            if(Bukkit.getWorlds().contains(Bukkit.getWorld(name))) {
-            } if(config.getBoolean("World.WorldName." + name + ".world.enabled")){
-
-                }else {
-                    Bukkit.unloadWorld(name, true);
-                }
             }
+
+        }catch (WorldError e){
+            e.printStackTrace();
         }
+        save(true);
+    }
 
 
     @Override
     public World getWorld(String worldName) throws WorldError{
+        save(false);
 
         if(config.get("World.WorldName." + worldName.toLowerCase()) == null){
             throw new WorldError();
@@ -282,27 +303,18 @@ public class WorldManager implements WorldGenerator {
     }
 
     @Override
-    public void disableWorld(boolean disable){
-        if(disable == true){
-
-        }else{
-
-        }
-    }
-
-    @Override
     public void deleteWorld(String worldName) throws WorldError{
         save(false);
         if(config.get("World.WorldName." + worldName.toLowerCase()) == null){
             throw new WorldError();
         }
 
-        File file = (File) config.get("World.WorldName." + worldName.toLowerCase() + ".worldFolder");
+        Bukkit.unloadWorld(worldName, false);
+        File file = new File(config.getString("World.WorldName." + worldName.toLowerCase() + ".worldFolder"));
         file.delete();
         removefromConfig(worldName);
         save(true);
     }
-
 
 
     private void save(boolean b){
@@ -316,5 +328,10 @@ public class WorldManager implements WorldGenerator {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public Object get(String Path){
+        save(false);
+        return config.get(Path);
     }
 }

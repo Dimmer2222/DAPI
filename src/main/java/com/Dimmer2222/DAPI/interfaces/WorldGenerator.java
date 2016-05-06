@@ -9,7 +9,7 @@ import org.bukkit.WorldType;
 import java.io.File;
 import java.util.Set;
 
-public interface WorldGenerator {
+public interface WorldGenerator{
 
     void generateWorld(String worldName, World.Environment environment, WorldType worldType) throws WorldError;
 
@@ -18,9 +18,7 @@ public interface WorldGenerator {
     void deleteWorld(String worldName) throws WorldError;
 
     void removefromConfig(String worldName) throws WorldError;
-
-    void setup();
-
+    
     Set<String> getWorlds() throws WorldError;
 
     public boolean isPvP(String worldName) throws WorldError;
@@ -48,13 +46,5 @@ public interface WorldGenerator {
     void setMonster(String worldName ,boolean active);
 
     void setDifficulty(String worldName ,Difficulty diff);
-
-    void setWorldType(String worldName, WorldType worldType);
-
-    void setEnvironment(String worldName, World.Environment environment);
-
-    void loadWorlds();
-
-    void disableWorld(boolean disable);
 
 }

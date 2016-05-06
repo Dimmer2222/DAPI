@@ -88,8 +88,8 @@ public class RegionManager {
     }
 
 
-    public List<Region> getRegions(){
-        List<Region> regions = new ArrayList<>();
+    public Set<Region> getRegions(){
+        Set<Region> regions = new HashSet<>();
         for(String name : config.getConfigurationSection("Region.RegionName").getKeys(false)){
             try {
                 regions.add(getRegion(name));

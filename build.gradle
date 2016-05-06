@@ -4,22 +4,17 @@ apply plugin: 'idea'
 
 
 ext{
-
     bukkitVersion = "1.8.8-R0.1-SNAPSHOT"
-    junitVersion = "4.12"
-    reflectionsVersion = "0.9.10"
 }
 
 
 
     group = 'com.Dimmer2222.DAPI'
-    version = '0.2-devBuild13'
+    version = '0.2-RC'
 
 
     dependencies {
         compile "org.bukkit:bukkit:$bukkitVersion"
-        compile "org.reflections:reflections:$reflectionsVersion"
-
     }
 
 

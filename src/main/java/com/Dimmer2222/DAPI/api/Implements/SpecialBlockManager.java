@@ -1,7 +1,19 @@
 package com.Dimmer2222.DAPI.api.Implements;
 
+import com.Dimmer2222.DAPI.exceptions.ValueExistException;
+import com.Dimmer2222.DAPI.exceptions.ValueNotExistException;
 import com.Dimmer2222.DAPI.interfaces.Special;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /*
@@ -28,30 +40,109 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public class SpecialBlockManager implements Special {
+public class SpecialBlockManager implements Special<Block> {
 
-    @Override
-    public void createSpecialObject() {
+    File file;
+    FileConfiguration config;
 
+    public SpecialBlockManager(String Path, String Name) {
+        file = new File(Path, Name);
+        config = YamlConfiguration.loadConfiguration(file);
     }
 
     @Override
-    public void getSpecialObject() {
+    public void createSpecialObject(Block object, String name) {
+        save(false);
+        config.set("SpecialBlock." + name.toLowerCase(), name.toLowerCase());
+        config.set("SpecialBlock." + name.toLowerCase() + ".world", object.getWorld().getName());
+        config.set("SpecialBlock." + name.toLowerCase() + ".x", object.getX());
+        config.set("SpecialBlock." + name.toLowerCase() + ".y", object.getY());
+        config.set("SpecialBlock." + name.toLowerCase() + ".z", object.getZ());
+        save(true);
+    }
 
+    public void createSpecialObject(Material object, Location loc, String name) {
+        save(false);
+        loc.getBlock().setType(object);
+        config.set("SpecialBlock." + name.toLowerCase(), name.toLowerCase());
+        config.set("SpecialBlock." + name.toLowerCase() + ".world", loc.getWorld().getName());
+        config.set("SpecialBlock." + name.toLowerCase() + ".x", loc.getBlock().getX());
+        config.set("SpecialBlock." + name.toLowerCase() + ".y", loc.getBlock().getY());
+        config.set("SpecialBlock." + name.toLowerCase() + ".z", loc.getBlock().getZ());
+        save(true);
     }
 
     @Override
-    public void deleteSpecialObject() {
+    public void createSpecialObject(Location loc, String name) throws ValueExistException {
+        save(false);
+        if(config.get("SpecialBlock." + name.toLowerCase()) != null){
+            throw new ValueExistException();
+        }
+        config.set("SpecialBlock." + name.toLowerCase(), name.toLowerCase());
+        config.set("SpecialBlock." + name.toLowerCase() + ".world", loc.getWorld().getName());
+        config.set("SpecialBlock." + name.toLowerCase() + ".x", loc.getBlock().getX());
+        config.set("SpecialBlock." + name.toLowerCase() + ".y", loc.getBlock().getY());
+        config.set("SpecialBlock." + name.toLowerCase() + ".z", loc.getBlock().getZ());
+        save(true);
+    }
 
+
+    @Override
+    public Block getSpecialObject(String Name) throws ValueNotExistException {
+        save(false);
+        if(config.get("SpecialBlock." + Name.toLowerCase()) == null){
+            throw new ValueNotExistException();
+        }
+
+
+        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + Name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + Name.toLowerCase() + ".x"), config.getInt("SpecialBlock." + Name.toLowerCase() + ".y"), config.getInt("SpecialBlock." + Name.toLowerCase() + ".z")).getBlock();
     }
 
     @Override
-    public Location getSpecialObjectLocation() {
-        return null;
+    public Set<Block> getSpecialObjects() {
+        save(false);
+        Set<Block> blocks = new HashSet<>();
+        for(String name : config.getConfigurationSection("SpecialBlock").getKeys(false)){
+            blocks.add(new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + name.toLowerCase() + "x"), config.getInt("SpecialBlock." + name.toLowerCase() + "y"), config.getInt("SpecialBlock." + name.toLowerCase() + "z")).getBlock());
+        }
+        return blocks;
     }
 
     @Override
-    public void loadSpecialObjects() {
+    public void deleteSpecialObject(String name) throws ValueNotExistException {
+        save(false);
+        if(config.get("SpecialBlock." + name.toLowerCase()) == null) {
+                throw new ValueNotExistException();
+            }
+                config.set("SpecialBlock." + name.toLowerCase(), null);
+        }
 
+    @Override
+    public Location getSpecialObjectLocation(String name) throws ValueNotExistException {
+        save(false);
+        if(config.get("SpecialBlock." + name.toLowerCase()) == null){
+            throw new ValueNotExistException();
+        }
+
+
+
+        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + name.toLowerCase() + ".x"), config.getInt("SpecialBlock." + name.toLowerCase() + ".y"), config.getInt("SpecialBlock." + name.toLowerCase() + ".z"));
+
+    }
+
+
+    private void save(boolean b){
+        try{
+        if(!file.exists()) {
+                file.createNewFile();
+        }
+            if (b) {
+                config.save(file);
+            }
+            }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
+
+

@@ -1,11 +1,4 @@
-package com.Dimmer2222.DAPI.interfaces;
-
-import com.Dimmer2222.DAPI.exceptions.ValueExistException;
-import com.Dimmer2222.DAPI.exceptions.ValueNotExistException;
-import org.bukkit.Location;
-import org.bukkit.Material;
-
-import java.util.Set;
+package com.Dimmer2222.DAPI.exceptions;
 
 /*
 The MIT License (MIT)
@@ -31,20 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public interface Special<T> {
 
-
-    void createSpecialObject(T object, String name);
-
-    void createSpecialObject(Location loc, String name) throws ValueExistException;
-
-    T getSpecialObject(String Name) throws ValueNotExistException;
-
-    Set<T> getSpecialObjects();
-
-    void deleteSpecialObject(String name) throws ValueNotExistException;
-
-    Location getSpecialObjectLocation(String name) throws ValueNotExistException;
-
-
+public class ValueExistException extends CoreException{
 }
