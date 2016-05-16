@@ -7,4 +7,4 @@ Because I'm coming from Germany the Javadoc when it exist is in German because m
 RC 0.2: 06.05.2016 
 
 #RELEASES
-Date of the 0.2: Hopefully this week.
+Date of the 0.2: Coming soon.
