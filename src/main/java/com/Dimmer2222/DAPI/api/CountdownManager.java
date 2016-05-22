@@ -3,7 +3,6 @@ package com.Dimmer2222.DAPI.api;
 import com.Dimmer2222.DAPI.exceptions.ValueNotExistException;
 import com.Dimmer2222.DAPI.exceptions.WrongValueException;
 import org.bukkit.Bukkit;
-import org.bukkit.conversations.NullConversationPrefix;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -36,10 +35,22 @@ SOFTWARE.
 
 public class CountdownManager {
 
-    private Map<UUID, Long> Time = new HashMap<>();
-    private Map<UUID, Long> diffTime = new HashMap<>();
+    //HashMap that saves the first System.currentTime();
+    private Map<UUID, Long> Time;
+    //HashMap that saves the difference of the System.currentTime();
+    private Map<UUID, Long> diffTime;
 
+    public CountdownManager(){
+        Time = new HashMap<>();
+        diffTime = new HashMap<>();
+    }
+
+    //Variable there long is the Cooldown
     private long Cooldown = 0;
+
+    /**
+     * Save all Player with a Countdown
+     */
 
     public void saveallPlayers() {
         for (Player p : Bukkit.getOnlinePlayers()) {

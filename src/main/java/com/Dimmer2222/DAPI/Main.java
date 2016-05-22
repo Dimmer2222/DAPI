@@ -2,6 +2,8 @@ package com.Dimmer2222.DAPI;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+
 /*
 The MIT License (MIT)
 
@@ -26,7 +28,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+
 public class Main extends JavaPlugin{
+
+
+    /**
+     * HashMap that saves all registered Classes that implements the DAPI interface
+     */
+    static HashMap<String, DAPI> dapi = new HashMap<>();
 
 
     @Override

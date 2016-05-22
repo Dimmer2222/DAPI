@@ -45,6 +45,7 @@ public class WorldManager implements WorldGenerator {
     public WorldManager(String Path, String File){
         file = new File(Path, File);
         config = YamlConfiguration.loadConfiguration(file);
+        setup();
     }
 
     @Override
@@ -66,6 +67,16 @@ public class WorldManager implements WorldGenerator {
         config.set("World.WorldName." + worldName.toLowerCase() + ".properties.type", Bukkit.getWorld(worldName).getWorldType());
         config.set("World.WorldName." + worldName.toLowerCase() + ".properties.environment", Bukkit.getWorld(worldName).getEnvironment());
         save(true);
+    }
+
+    private void setup() {
+        for (String worldName : config.getConfigurationSection("World.WorldName").getKeys(false)){
+            setPvP(worldName, config.getBoolean("World.WorldName." + worldName.toLowerCase() + ".properties.pvp"));
+            setSpawnLocation(worldName, new Location(Bukkit.getWorld(config.getString("World.WorldName." + worldName.toLowerCase()) + ".properties.spawn.world") ,config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.X"), config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.Y"), config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.Z"), (float) config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.yaw"), (float) config.getDouble("World.WorldName." + config.getDouble(worldName.toLowerCase() + ".properties.spawn.pitch"))));
+            setAnimals(worldName, config.getBoolean("World.WorldName." + worldName.toLowerCase() + ".properties.animals"));
+            setMonster(worldName, config.getBoolean("World.WorldName." + worldName.toLowerCase() + ".properties.monster"));
+            setDifficulty(worldName, (Difficulty) config.get("World.WorldName." + worldName.toLowerCase() + ".properties.difficulty"));
+    }
     }
 
 

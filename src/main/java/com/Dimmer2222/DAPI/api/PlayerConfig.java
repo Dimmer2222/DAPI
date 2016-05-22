@@ -1,6 +1,7 @@
 package com.Dimmer2222.DAPI.api;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -49,18 +50,18 @@ SOFTWARE.
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				if (config.get("PlayerConfig.PlayerUUID." + p.getUniqueId()) == null) {
 					config.set("PlayerConfig.PlayerUUID." + p.getUniqueId(), false);
-			save(true);
+					save(true);
 				}
 			}
 		}
 
 		private void save(boolean b) {
-			try{
-			if(!file.exists())
-				file.createNewFile();
-				if(b)
-				config.save(file);
-			}catch (IOException e){
+			try {
+				if (!file.exists())
+					file.createNewFile();
+				if (b)
+					config.save(file);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -74,16 +75,15 @@ SOFTWARE.
 			}
 		}
 
-		public void changePlayerBoolean(UUID PlayerUUID, boolean b) throws ConfigNotSetException{
-			    save(false);
-			if(config.get("PlayerConfig.PlayerUUID." + PlayerUUID) != null){
+		public void changePlayerBoolean(UUID PlayerUUID, boolean b) throws ConfigNotSetException {
+			save(false);
+			if (config.get("PlayerConfig.PlayerUUID." + PlayerUUID) != null) {
 				config.set("PlayerConfig.PlayerUUID." + PlayerUUID, b);
 				save(true);
-			}else{
+			} else {
 				throw new ConfigNotSetException();
 			}
 		}
-
 	}
 
 

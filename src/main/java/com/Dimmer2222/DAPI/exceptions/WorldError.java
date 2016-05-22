@@ -24,5 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ * Will be thrown if the World-System should not work.
+ */
+
 public class WorldError extends CoreException {
 }

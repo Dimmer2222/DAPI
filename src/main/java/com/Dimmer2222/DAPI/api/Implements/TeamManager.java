@@ -1,9 +1,7 @@
 package com.Dimmer2222.DAPI.api.Implements;
 
-import com.Dimmer2222.DAPI.exceptions.CoreException;
 import com.Dimmer2222.DAPI.exceptions.TeamError;
 import com.Dimmer2222.DAPI.interfaces.Teams;
-import junit.framework.Test;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.*;
@@ -89,6 +87,8 @@ public class TeamManager implements Teams{
     public void deleteTeam(String TeamName) throws TeamError {
         save(false);
         if (teamconfig.getString("Team.TeamName." + TeamName) != null) {
+
+            //to awkward
             /*for(Player p : Bukkit.getOnlinePlayers()) {
                 if (this.getTeam(p.getUniqueId()) != null) {
                     if(this.getTeam(p.getUniqueId()).equalsIgnoreCase(TeamName)){

@@ -11,6 +11,7 @@ import java.util.Set;
 
 public interface WorldGenerator{
 
+
     void generateWorld(String worldName, World.Environment environment, WorldType worldType) throws WorldError;
 
     World getWorld(String worldName) throws WorldError;
@@ -18,7 +19,7 @@ public interface WorldGenerator{
     void deleteWorld(String worldName) throws WorldError;
 
     void removefromConfig(String worldName) throws WorldError;
-    
+
     Set<String> getWorlds() throws WorldError;
 
     public boolean isPvP(String worldName) throws WorldError;

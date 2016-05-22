@@ -43,7 +43,6 @@ public class BukkitEasier {
 
     public static void registerCommand(JavaPlugin jp, String command, CommandExecutor ce) {
         jp.getCommand(command).setExecutor(ce);
-
     }
 
     /**
@@ -56,5 +55,6 @@ public class BukkitEasier {
     public static void registerEvents(JavaPlugin jp, Listener l) {
         jp.getServer().getPluginManager().registerEvents(l, jp);
     }
+
 
 }

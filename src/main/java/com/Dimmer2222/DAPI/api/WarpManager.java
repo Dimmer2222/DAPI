@@ -1,14 +1,14 @@
 package com.Dimmer2222.DAPI.api;
 
-import java.io.File;
-import java.io.IOException;
+		import java.io.File;
+		import java.io.IOException;
 
 
-import com.Dimmer2222.DAPI.exceptions.ConfigNotSetException;
-import com.Dimmer2222.DAPI.exceptions.CoreException;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
+		import com.Dimmer2222.DAPI.exceptions.ConfigNotSetException;
+		import com.Dimmer2222.DAPI.exceptions.CoreException;
+		import org.bukkit.Bukkit;
+		import org.bukkit.Location;
+		import org.bukkit.configuration.file.YamlConfiguration;
 
 /*
 The MIT License (MIT)
@@ -78,9 +78,9 @@ public class WarpManager {
 	public String getWarps() {
 		StringBuilder sb = new StringBuilder("");
 
-			for(String warps : config.getConfigurationSection("Warp").getConfigurationSection("WarpName").getKeys(false)){
+		for(String warps : config.getConfigurationSection("Warp").getConfigurationSection("WarpName").getKeys(false)){
 
-				sb.append(warps + " ");
+			sb.append(warps + " ");
 
 		}
 
@@ -90,7 +90,7 @@ public class WarpManager {
 
 	public void deleteWarp(String WarpName) throws ConfigNotSetException{
 		save(false);
-  	  	WarpName = WarpName.toLowerCase();
+		WarpName = WarpName.toLowerCase();
 		if(config.get("Warp.WarpName." + WarpName) != null){
 			config.set("Warp.WarpName." + WarpName, null);
 			save(true);
@@ -102,16 +102,16 @@ public class WarpManager {
 
 	private void save(boolean b){
 		try{
-		if(!file.exists()){
-			file.createNewFile();
-		}
+			if(!file.exists()){
+				file.createNewFile();
+			}
 			if(b)
-		config.save(file);
-	}catch (IOException e){
+				config.save(file);
+		}catch (IOException e){
 			e.printStackTrace();
 		}
 	}
 
-	}
+}
 
 

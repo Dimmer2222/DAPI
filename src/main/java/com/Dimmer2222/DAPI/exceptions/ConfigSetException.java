@@ -24,5 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ * Will be thrown if in the Config is not set the path
+ */
+
 public class ConfigSetException extends CoreException{
 }

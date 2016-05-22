@@ -56,8 +56,11 @@ public class SpecialItemManager implements Special<Item>{
     }
 
     @Override
-    public void createSpecialObject(Item object, String name) {
+    public void createSpecialObject(Item object, String name) throws ValueExistException{
         save(false);
+        if(config.get("SpecialItem." + name.toLowerCase()) != null){
+            throw new ValueExistException();
+        }
         config.set("SpecialItem." + name.toLowerCase(), name.toLowerCase());
         config.set("SpecialItem." + name.toLowerCase() + ".world", object.getWorld().getName());
         config.set("SpecialItem." + name.toLowerCase() + ".x", object.getLocation().getX());
@@ -69,6 +72,9 @@ public class SpecialItemManager implements Special<Item>{
     @Override
     public void createSpecialObject(Location loc, String name) throws ValueExistException {
         save(false);
+        if(config.get("SpecialItem." + name.toLowerCase()) != null){
+            throw new ValueExistException();
+        }
         loc.getWorld().spawnEntity(loc, EntityType.DROPPED_ITEM);
         config.set("SpecialItem." + name.toLowerCase() + ".world", loc.getWorld().getName());
         config.set("SpecialItem." + name.toLowerCase() + ".x", loc.getX());

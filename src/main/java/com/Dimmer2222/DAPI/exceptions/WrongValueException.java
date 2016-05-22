@@ -24,5 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ * Will be thrown if a value don't exist and the Method/Construct needs this.
+ */
+
 public class WrongValueException extends CoreException{
 }

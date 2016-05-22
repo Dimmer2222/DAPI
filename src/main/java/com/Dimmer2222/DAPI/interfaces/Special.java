@@ -33,10 +33,28 @@ SOFTWARE.
 
 public interface Special<T> {
 
+    /**
+     * Creates a Object from a Special Type like Items or Blocks or it save the location of the Object
+     * @param object Object(Items or Blocks)
+     * @param name Name of the Object
+     * @throws ValueExistException Will be thrown if the Object Name is already taken.
+     */
+    void createSpecialObject(T object, String name) throws ValueExistException;
 
-    void createSpecialObject(T object, String name);
-
+    /**
+     * Saves the Object like the first createSpeicalObject method but you can give it a Location
+     * @param loc Location
+     * @param name Name of the Object
+     * @throws ValueExistException Will be thrown if the Object Name is already taken.
+     */
     void createSpecialObject(Location loc, String name) throws ValueExistException;
+
+    /**
+     *
+     * @param Name
+     * @return
+     * @throws ValueNotExistException
+     */
 
     T getSpecialObject(String Name) throws ValueNotExistException;
 

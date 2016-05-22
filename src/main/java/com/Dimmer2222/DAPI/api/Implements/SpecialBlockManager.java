@@ -51,8 +51,11 @@ public class SpecialBlockManager implements Special<Block> {
     }
 
     @Override
-    public void createSpecialObject(Block object, String name) {
+    public void createSpecialObject(Block object, String name) throws ValueExistException{
         save(false);
+        if(config.get("SpecialBlock." + name.toLowerCase()) != null){
+            throw new ValueExistException();
+        }
         config.set("SpecialBlock." + name.toLowerCase(), name.toLowerCase());
         config.set("SpecialBlock." + name.toLowerCase() + ".world", object.getWorld().getName());
         config.set("SpecialBlock." + name.toLowerCase() + ".x", object.getX());
@@ -61,8 +64,11 @@ public class SpecialBlockManager implements Special<Block> {
         save(true);
     }
 
-    public void createSpecialObject(Material object, Location loc, String name) {
+    public void createSpecialObject(Material object, Location loc, String name) throws ValueExistException{
         save(false);
+        if(config.get("SpecialBlock." + name.toLowerCase()) != null){
+            throw new ValueExistException();
+        }
         loc.getBlock().setType(object);
         config.set("SpecialBlock." + name.toLowerCase(), name.toLowerCase());
         config.set("SpecialBlock." + name.toLowerCase() + ".world", loc.getWorld().getName());

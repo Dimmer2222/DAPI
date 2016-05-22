@@ -1,7 +1,13 @@
 package com.Dimmer2222.DAPI;
 
 import com.Dimmer2222.DAPI.api.CountdownManager;
-import org.bukkit.Bukkit;
+import com.Dimmer2222.DAPI.api.Implements.SpecialBlockManager;
+import com.Dimmer2222.DAPI.api.Implements.SpecialItemManager;
+import com.Dimmer2222.DAPI.api.Implements.TeamManager;
+import com.Dimmer2222.DAPI.api.Implements.WorldManager;
+import com.Dimmer2222.DAPI.api.PlayerConfig;
+import com.Dimmer2222.DAPI.api.RegionManager;
+import com.Dimmer2222.DAPI.api.WarpManager;
 
 /*
 The MIT License (MIT)
@@ -27,19 +33,87 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public class DAPI {
+public interface DAPI {
 
-    private static CountdownManager cm = new CountdownManager();
 
-    public static boolean isDAPIInstalled(){
-        if(Bukkit.getServer().getPluginManager().getPlugin("DAPI") != null){
-            return true;
-        }
-        return false;
-    }
+/**
+ *
+ * Get a Instance of the WorldManager Class
+ * @see WorldManager
+ *
+*/
+    WorldManager getWorldManager();
 
-    public static CountdownManager getCountdownManager(){
-        return DAPI.cm;
-    }
+
+    /**
+     *
+     * Get a Instance of the WorldManager Class
+     * @see WorldManager
+     *
+     */
+
+    CountdownManager getCountdownManager();
+
+
+    /**
+     *
+     * Get a Instance of the PlayerConfig Class
+     * @see PlayerConfig
+     *
+     */
+
+    PlayerConfig getPlayerConfig();
+
+
+    /**
+     *
+     * Get a Instance of the RegionManager Class
+     * @see RegionManager
+     *
+     */
+
+    RegionManager getRegionManager();
+
+
+    /**
+     *
+     * Get a Instance of the WarpManager Class
+     * @see WarpManager
+     *
+     */
+
+    WarpManager getWarpManager();
+
+
+    /**
+     *
+     * Get a Instance of the TeamManager Class
+     * @see TeamManager
+     *
+     */
+
+    TeamManager getTeamManager();
+
+    /**
+     *
+     * Get a Instance of the SpecialBlockManager Class
+     * @see SpecialBlockManager
+     *
+     */
+
+    SpecialBlockManager getSpecialBlockManager();
+
+
+    /**
+     *
+     * Get a Instance of the SpecialItemManager Class
+     * @see SpecialItemManager
+     *
+     */
+
+    SpecialItemManager getSpecialItemManager();
+
+
+
 
 }
