@@ -10,7 +10,7 @@ ext{
 
 
     group = 'com.Dimmer2222.DAPI'
-    version = '0.2.1-RC'
+    version = '0.1.99'
 
 
     dependencies {
