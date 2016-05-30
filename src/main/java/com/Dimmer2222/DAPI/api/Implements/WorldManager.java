@@ -45,7 +45,7 @@ public class WorldManager implements WorldGenerator {
     public WorldManager(String Path, String File){
         file = new File(Path, File);
         config = YamlConfiguration.loadConfiguration(file);
-        setup();
+      //  setup();
     }
 
     @Override
@@ -71,6 +71,9 @@ public class WorldManager implements WorldGenerator {
 
     private void setup() {
         for (String worldName : config.getConfigurationSection("World.WorldName").getKeys(false)){
+            if(worldName == null){
+                return;
+            }
             setPvP(worldName, config.getBoolean("World.WorldName." + worldName.toLowerCase() + ".properties.pvp"));
             setSpawnLocation(worldName, new Location(Bukkit.getWorld(config.getString("World.WorldName." + worldName.toLowerCase()) + ".properties.spawn.world") ,config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.X"), config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.Y"), config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.Z"), (float) config.getDouble("World.WorldName." + worldName.toLowerCase() + ".properties.spawn.yaw"), (float) config.getDouble("World.WorldName." + config.getDouble(worldName.toLowerCase() + ".properties.spawn.pitch"))));
             setAnimals(worldName, config.getBoolean("World.WorldName." + worldName.toLowerCase() + ".properties.animals"));

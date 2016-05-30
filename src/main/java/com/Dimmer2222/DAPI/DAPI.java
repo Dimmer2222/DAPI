@@ -2,7 +2,6 @@ package com.Dimmer2222.DAPI;
 
 import com.Dimmer2222.DAPI.api.CountdownManager;
 import com.Dimmer2222.DAPI.api.Implements.SpecialBlockManager;
-import com.Dimmer2222.DAPI.api.Implements.SpecialItemManager;
 import com.Dimmer2222.DAPI.api.Implements.TeamManager;
 import com.Dimmer2222.DAPI.api.Implements.WorldManager;
 import com.Dimmer2222.DAPI.api.PlayerConfig;
@@ -102,18 +101,6 @@ public interface DAPI {
      */
 
     SpecialBlockManager getSpecialBlockManager();
-
-
-    /**
-     *
-     * Get a Instance of the SpecialItemManager Class
-     * @see SpecialItemManager
-     *
-     */
-
-    SpecialItemManager getSpecialItemManager();
-
-
 
 
 }

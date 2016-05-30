@@ -101,7 +101,7 @@ public class SpecialBlockManager implements Special<Block> {
         }
 
 
-        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + Name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + Name.toLowerCase() + ".x"), config.getInt("SpecialBlock." + Name.toLowerCase() + ".y"), config.getInt("SpecialBlock." + Name.toLowerCase() + ".z")).getBlock();
+        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + Name.toLowerCase() + ".world")) ,config.getDouble("SpecialBlock." + Name.toLowerCase() + ".x"), config.getDouble("SpecialBlock." + Name.toLowerCase() + ".y"), config.getDouble("SpecialBlock." + Name.toLowerCase() + ".z")).getBlock();
     }
 
     @Override
@@ -109,7 +109,7 @@ public class SpecialBlockManager implements Special<Block> {
         save(false);
         Set<Block> blocks = new HashSet<>();
         for(String name : config.getConfigurationSection("SpecialBlock").getKeys(false)){
-            blocks.add(new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + name.toLowerCase() + "x"), config.getInt("SpecialBlock." + name.toLowerCase() + "y"), config.getInt("SpecialBlock." + name.toLowerCase() + "z")).getBlock());
+            blocks.add(new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getDouble("SpecialBlock." + name.toLowerCase() + "x"), config.getDouble("SpecialBlock." + name.toLowerCase() + "y"), config.getDouble("SpecialBlock." + name.toLowerCase() + "z")).getBlock());
         }
         return blocks;
     }
@@ -132,7 +132,7 @@ public class SpecialBlockManager implements Special<Block> {
 
 
 
-        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getInt("SpecialBlock." + name.toLowerCase() + ".x"), config.getInt("SpecialBlock." + name.toLowerCase() + ".y"), config.getInt("SpecialBlock." + name.toLowerCase() + ".z"));
+        return new Location(Bukkit.getWorld(config.getString("SpecialBlock." + name.toLowerCase() + ".world")) ,config.getDouble("SpecialBlock." + name.toLowerCase() + ".x"), config.getDouble("SpecialBlock." + name.toLowerCase() + ".y"), config.getDouble("SpecialBlock." + name.toLowerCase() + ".z"));
 
     }
 
