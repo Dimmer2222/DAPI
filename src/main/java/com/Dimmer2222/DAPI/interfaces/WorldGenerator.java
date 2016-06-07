@@ -11,7 +11,6 @@ import java.util.Set;
 
 public interface WorldGenerator{
 
-
     void generateWorld(String worldName, World.Environment environment, WorldType worldType) throws WorldError;
 
     World getWorld(String worldName) throws WorldError;
@@ -20,32 +19,35 @@ public interface WorldGenerator{
 
     void removefromConfig(String worldName) throws WorldError;
 
-    Set<String> getWorlds() throws WorldError;
+    Set<String> getWorlds();
 
-    public boolean isPvP(String worldName) throws WorldError;
+    boolean isPvP(String worldName) throws WorldError;
 
     Location getSpawnLocation(String worldName) throws WorldError;
 
-    File getWorldFolder(String worldName);
+    File getWorldFolder(String worldName) throws WorldError;
 
-    boolean isAnimals(String worldName);
+    boolean isAnimals(String worldName) throws WorldError;
 
-    boolean isMonsters(String worldName);
+    boolean isMonsters(String worldName) throws WorldError;
 
-    Difficulty getDifficulty(String worldName);
+    Difficulty getDifficulty(String worldName) throws WorldError;
 
-    WorldType getWorldType(String worldName);
+    WorldType getWorldType(String worldName) throws WorldError;
 
-    World.Environment getEnvironment(String worldName);
+    World.Environment getEnvironment(String worldName) throws WorldError;
 
-    void setPvP(String worldName, boolean PvP);
+    void setPvP(String worldName, boolean PvP) throws WorldError;
 
-    void setSpawnLocation(String worldName, Location loc);
+    void setSpawnLocation(String worldName, Location loc) throws WorldError;
 
-    void setAnimals(String worldName ,boolean active);
+    void setAnimals(String worldName ,boolean active) throws WorldError;
 
-    void setMonster(String worldName ,boolean active);
+    void setMonster(String worldName ,boolean active) throws WorldError;
 
-    void setDifficulty(String worldName ,Difficulty diff);
+    void setDifficulty(String worldName ,String diff) throws WorldError;
+
+    void importWorld(String WorldName) throws WorldError;
+
 
 }
