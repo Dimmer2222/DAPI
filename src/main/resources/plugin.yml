@@ -20,6 +20,6 @@
  #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  #SOFTWARE.
 
-name: DAPI
-main: com.Dimmer2222.DAPI.Main
+name: DLIB
+main: com.Dimmer2222.DLIB.Main
 version: 0.1.99
