@@ -36,7 +36,7 @@ public interface Teams {
      * Method to create a Team
      * @param PlayerUUID UUID of the Team Creator
      * @param TeamName Name of the Team
-     * @throws CoreException Will be thrown when you are in a Team or the Team exist already
+     * @throws TeamError Will be thrown if the Team is already created
      */
 
     void createTeam(UUID PlayerUUID, String TeamName) throws TeamError;

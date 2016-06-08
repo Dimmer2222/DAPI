@@ -45,6 +45,7 @@ public interface DLIB {
  *
  * Get a Instance of the WorldManager Class
  * @see WorldManager
+ * @return a WorldManager Instance
  *
 */
     WorldManager getWorldManager();
@@ -54,7 +55,7 @@ public interface DLIB {
      *
      * Get a Instance of the WorldManager Class
      * @see WorldManager
-     *
+     * @return a CountdownManager Instance
      */
 
     CountdownManager getCountdownManager();
@@ -64,7 +65,7 @@ public interface DLIB {
      *
      * Get a Instance of the PlayerConfig Class
      * @see PlayerConfig
-     *
+     * @return a PlayerConfig Instance
      */
 
     PlayerConfig getPlayerConfig();
@@ -74,7 +75,7 @@ public interface DLIB {
      *
      * Get a Instance of the RegionManager Class
      * @see RegionManager
-     *
+     * @return a RegionManager Instance
      */
 
     RegionManager getRegionManager();
@@ -84,7 +85,7 @@ public interface DLIB {
      *
      * Get a Instance of the WarpManager Class
      * @see WarpManager
-     *
+     * @return a WarpManager Instance
      */
 
     WarpManager getWarpManager();
@@ -94,7 +95,7 @@ public interface DLIB {
      *
      * Get a Instance of the TeamManager Class
      * @see TeamManager
-     *
+     * @return a TeamManger Instance
      */
 
     TeamManager getTeamManager();
@@ -103,7 +104,7 @@ public interface DLIB {
      *
      * Get a Instance of the SpecialBlockManager Class
      * @see SpecialBlockManager
-     *
+     * @return a SpecialBlockManager Instance
      */
 
     SpecialBlockManager getSpecialBlockManager();

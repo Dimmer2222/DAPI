@@ -63,8 +63,8 @@ public class CountdownManager {
 
     /**
      * Save the Player UUID for a Countdown in a HashMap and set a Value for the Cooldown Variable that is for where long the the Player has to wait
-     * @param PlayerUUID
-     * @param secondsorMinutes
+     * @param PlayerUUID UUID from the Player
+     * @param secondsorMinutes A Number for seconds or minutes
      */
 
     public void createCountdownforPlayer(UUID PlayerUUID, long secondsorMinutes) {
@@ -74,7 +74,7 @@ public class CountdownManager {
 
     /**
      * Save the Player UUID in a HashMap for a Cooldown
-     * @param PlayerUUID
+     * @param PlayerUUID UUID from the Player
      */
     public void createCountdownforPlayer(UUID PlayerUUID) {
 
@@ -86,7 +86,8 @@ public class CountdownManager {
      * @param PlayerUUID UUID of the Player
      * @param seconds Should it calculate in seconds or Minutes if true it calculate in seconds
      * @return if the Player don't have a Countdown it will return false otherwise true
-     */
+     * @throws ValueNotExistException It will be thrown if the Player isn't saved in the HashMap
+     * */
     public boolean hasPlayeraCountdown(UUID PlayerUUID, boolean seconds) throws ValueNotExistException{
         if(!Time.containsKey(PlayerUUID)){
            throw new ValueNotExistException();

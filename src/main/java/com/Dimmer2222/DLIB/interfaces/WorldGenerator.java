@@ -25,7 +25,7 @@ public interface WorldGenerator{
      * Get a World that the Plugin is loading
      * @param worldName Name of the World
      * @return a World
-     * @throws WorldError
+     * @throws WorldError Will be thrown if the Plugin don't know the World
      */
     World getWorld(String worldName) throws WorldError;
 
@@ -75,7 +75,7 @@ public interface WorldGenerator{
 
     /**
      * Get if the Animals are enabled
-     * @param worldName
+     * @param worldName Name of the World
      * @return if true the animals are enabled if false otherwise
      * @throws WorldError Will be thrown if the Plugin don't know the World.
      */
@@ -84,7 +84,7 @@ public interface WorldGenerator{
     /**
      * Get if the Monsters are enabled
      * @param worldName Name of the World
-     * @@return if true the monsters are enabled if false otherwise
+     * @return if true the monsters are enabled if false otherwise
      * @throws WorldError Will be thrown if the Plugin don't know the World.
      */
 
@@ -120,7 +120,7 @@ public interface WorldGenerator{
      * Set if PvP is enabled
      * @param worldName Name of the World
      * @param PvP if true PvP is enabled if false otherwise
-     * @throws WorldError
+     * @throws WorldError Will be thrown if the Plugin don't know the World.
      */
     void setPvP(String worldName, boolean PvP) throws WorldError;
 
@@ -150,9 +150,9 @@ public interface WorldGenerator{
 
     /**
      * Set the difficulty in a World that the Plugin now
-     * @param worldName
-     * @param diff
-     * @throws WorldError
+     * @param worldName Name of the World
+     * @param diff Name of the Difficulty at "PEACEFUL", "EASY", "NORMAL" or "HARD"
+     * @throws WorldError Will be thrown if the Plugin don't know the World.
      */
     void setDifficulty(String worldName ,String diff) throws WorldError;
 

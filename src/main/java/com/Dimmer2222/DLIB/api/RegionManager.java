@@ -69,7 +69,7 @@ public class RegionManager {
      * @see Region
      * @param regionName Name of the Region
      * @return The Region that compare to the Name
-     * @throws RegionError
+     * @throws RegionError Will be thrown if the Region exist already.
      */
 
     public Region getRegion(String regionName) throws RegionError {

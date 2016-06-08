@@ -109,7 +109,7 @@ public class WarpManager {
 
 	/**
 	 * Delete a Warp with all the informations
-	 * @param WarpName
+	 * @param WarpName Name of the Warp
 	 * @throws ConfigNotSetException Will be thrown if the Warp is not created
      */
 

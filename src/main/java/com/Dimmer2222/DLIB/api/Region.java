@@ -41,8 +41,8 @@ public class Region implements ConfigurationSerializable {
     /**
      * Create a Object of this Class and use the Locations to create min und max values.
      * @param Name Name of the Region this use my RegionManager Class
-     * @param loc1
-     * @param loc2
+     * @param loc1 Position one of the Region
+     * @param loc2 Position two of the Region
      */
     public Region(String Name , Location loc1, Location loc2){
         this.minx = Math.min(loc1.getBlockX(), loc2.getBlockX());
@@ -108,23 +108,38 @@ public class Region implements ConfigurationSerializable {
     }
 
     /**
-     *
-     * @return
+     * Get the first World in the first Location.
+     * @return The Name of the World
      */
+
     public String getWorld1(){
         return world.getName();
     }
 
+    /**
+     * Get the second World of the second Location.
+     * @return The Name of the World.
+     */
     public String getWorld2(){
         if(world2 == null)
         return world.getName();
         return world2.getName();
     }
 
+    /**
+     * Get the Name of the Region
+     * @return The Name of the Region
+     */
     public String getName(){
         return Name;
     }
 
+
+    /**
+     * Find out if a Player is in the Region
+     * @param loc Player Location
+     * @return if the Player is in a Region it return true if it is false otherwise.
+     */
     public boolean insideRegion(Location loc) {
         if (!loc.getWorld().getName().equalsIgnoreCase(getWorld1())) {
             return false;
