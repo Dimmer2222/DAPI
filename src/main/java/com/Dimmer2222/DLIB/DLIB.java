@@ -33,9 +33,7 @@ SOFTWARE.
 */
 
 /**
- *
- * Should include a Class from the Plugin that use this
- *
+ * This is the Core of the Plugin this should be included and used to save some RAM with DCORE
  */
 
 public interface DLIB {
