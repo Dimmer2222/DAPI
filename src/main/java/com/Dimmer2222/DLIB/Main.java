@@ -34,7 +34,7 @@ public class Main extends JavaPlugin{
 
 
     /**
-     * HashMap that saves all registered Classes that implements the DAPI interface
+     * HashMap that saves all registered Classes that implements the DLIB interface
      */
     static HashMap<String, DLIB> DLIB = new HashMap<>();
 

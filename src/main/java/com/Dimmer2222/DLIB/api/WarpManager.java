@@ -3,6 +3,7 @@ package com.Dimmer2222.DLIB.api;
 import java.io.File;
 import java.io.IOException;
 import com.Dimmer2222.DLIB.exceptions.ConfigNotSetException;
+import com.Dimmer2222.DLIB.exceptions.ConfigSetException;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -36,13 +37,24 @@ public class WarpManager {
 	File file;
 	YamlConfiguration config;
 
-
+	/**
+	 * Create a Object of the Class
+	 * @param filepath Plugin Folder Path
+	 * @param filename File Name
+	 */
 	public WarpManager(String filepath, String filename) {
 		file = new File(filepath, filename);
 		config = YamlConfiguration.loadConfiguration(file);
 	}
 
-	public void createWarp(String WarpName, Location location) throws ConfigNotSetException{
+	/**
+	 * Create a Warp with Double Values
+	 * @param WarpName Name of the Warp
+	 * @param location Location of the Place there you teleported to
+	 * @throws ConfigSetException Will be thrown if the Warp exists
+     */
+
+	public void createWarp(String WarpName, Location location) throws ConfigSetException{
 		save(false);
 		WarpName = WarpName.toLowerCase();
 		if(config.get("Warp.WarpName." + WarpName) == null){
@@ -54,9 +66,15 @@ public class WarpManager {
 			config.set("Warp.WarpName." + WarpName + ".pitch", location.getPitch());
 			save(true);
 		}else{
-			throw new ConfigNotSetException();
+			throw new ConfigSetException();
 		}
 	}
+
+	/**
+	 * Get the Location of the Warp that a Player can be teleported to it.
+	 * @param WarpName Name of the Warp
+	 * @return Location there you save the warp
+     */
 
 	public Location getWarp(String WarpName) {
 		save(false);
@@ -72,6 +90,10 @@ public class WarpManager {
 
 	}
 
+	/**
+	 * Get all Warps in a String
+	 * @return Get a List of the Warps in a String
+     */
 	public String getWarps() {
 		StringBuilder sb = new StringBuilder("");
 
@@ -85,6 +107,12 @@ public class WarpManager {
 
 	}
 
+	/**
+	 * Delete a Warp with all the informations
+	 * @param WarpName
+	 * @throws ConfigNotSetException Will be thrown if the Warp is not created
+     */
+
 	public void deleteWarp(String WarpName) throws ConfigNotSetException{
 		save(false);
 		WarpName = WarpName.toLowerCase();
@@ -97,6 +125,10 @@ public class WarpManager {
 
 	}
 
+	/**
+	 * This Method is to save and to generate a new File then no one exist.
+	 * @param b Disable saving and generate a new File when no File exist by false, by true saving + checking if file exist
+	 */
 	private void save(boolean b){
 		try{
 			if(!file.exists()){

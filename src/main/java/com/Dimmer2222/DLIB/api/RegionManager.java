@@ -40,11 +40,22 @@ public class RegionManager {
     File file;
     YamlConfiguration config;
 
+    /**
+     * Create a Object of the Class
+     * @param Path Plugin Folder Path
+     * @param File File Name
+     */
     public RegionManager(String Path, String File){
         file = new File(Path, File);
         config = YamlConfiguration.loadConfiguration(file);
     }
 
+    /**
+     * Use to Locations to create a Region
+     * @param regionName Name of the Region
+     * @param loc1 Position one of the Region
+     * @param loc2 Position two of the Region
+     */
     public void createRegion(String regionName, Location loc1, Location loc2) {
             save(false);
             config.set("Region.RegionName." + regionName.toLowerCase(), regionName.toLowerCase());
@@ -53,6 +64,13 @@ public class RegionManager {
         }
 
 
+    /**
+     * Get a Region from the Region Class
+     * @see Region
+     * @param regionName Name of the Region
+     * @return The Region that compare to the Name
+     * @throws RegionError
+     */
 
     public Region getRegion(String regionName) throws RegionError {
         save(false);
@@ -76,7 +94,11 @@ public class RegionManager {
         return null;
     }
 
-
+    /**
+     * Delete a Region
+     * @param regionName Name of the Region
+     * @throws RegionError The exception will be thrown if the Region doesn't exist
+     */
     public void deleteRegion(String regionName) throws RegionError{
         save(false);
         if(config.get("Region.RegionName." + regionName.toLowerCase()) == null){
@@ -87,7 +109,10 @@ public class RegionManager {
         }
     }
 
-
+    /**
+     * Get all Region that are created
+     * @return A Set of all Regions
+     */
     public Set<Region> getRegions(){
         Set<Region> regions = new HashSet<>();
         for(String name : config.getConfigurationSection("Region.RegionName").getKeys(false)){
@@ -103,6 +128,10 @@ public class RegionManager {
         return regions;
     }
 
+    /**
+     * This Method is to save and to generate a new File then no one exist.
+     * @param b Disable saving and generate a new File when no File exist by false, by true saving + checking if file exist
+     */
     private void save(boolean b){
         try {
         if(!file.exists()){

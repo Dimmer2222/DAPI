@@ -46,6 +46,11 @@ public class TeamManager implements Teams{
 
 
 
+    /**
+     * Create a Object of the Class
+     * @param Path Plugin Folder Path
+     * @param TeamFileName File Name
+     */
     public TeamManager(String Path, String TeamFileName) {
         file = new File(Path, TeamFileName);
         teamconfig = YamlConfiguration.loadConfiguration(file);

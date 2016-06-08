@@ -38,12 +38,20 @@ SOFTWARE.
 		private File file;
 		private YamlConfiguration config;
 
+		/**
+		 * Create a Object of the Class
+		 * @param FilePath Plugin Folder Path
+		 * @param FileName File Name
+		 */
 		public PlayerConfig(String FilePath, String FileName) {
 			file = new File(FilePath, FileName);
 			config = YamlConfiguration.loadConfiguration(file);
 		}
 
 
+		/**
+		 * Save all Player with the Boolean of false. If they don't exists.
+         */
 		public void savePlayers() {
 			save(false);
 			for (Player p : Bukkit.getOnlinePlayers()) {
@@ -54,6 +62,10 @@ SOFTWARE.
 			}
 		}
 
+		/**
+		 * This Method is to save and to generate a new File then no one exist.
+		 * @param b Disable saving and generate a new File when no File exist by false, by true saving + checking if file exist
+		 */
 		private void save(boolean b) {
 			try {
 				if (!file.exists())
@@ -65,6 +77,12 @@ SOFTWARE.
 			}
 		}
 
+		/**
+		 * Get the Boolean from a Player that the Player have.
+		 * @param PlayerUUID UUID of the Player
+		 * @return The boolean that they Player have.
+		 * @throws ConfigNotSetException It will thrown if the Player aren't saved.
+         */
 		public boolean getPlayerBoolean(UUID PlayerUUID) throws ConfigNotSetException {
 			save(false);
 			if (config.get("PlayerConfig.PlayerUUID." + PlayerUUID) != null) {
@@ -74,6 +92,12 @@ SOFTWARE.
 			}
 		}
 
+		/**
+		 * With this method you can change the Player Boolean to false or true
+ 		 * @param PlayerUUID Name of the Player
+		 * @param b Value of the Boolean
+		 * @throws ConfigNotSetException If the Player aren't save.
+         */
 		public void changePlayerBoolean(UUID PlayerUUID, boolean b) throws ConfigNotSetException {
 			save(false);
 			if (config.get("PlayerConfig.PlayerUUID." + PlayerUUID) != null) {

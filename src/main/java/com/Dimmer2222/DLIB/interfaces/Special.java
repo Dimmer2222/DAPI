@@ -41,7 +41,7 @@ public interface Special<T> {
     void createSpecialObject(T object, String name) throws ValueExistException;
 
     /**
-     * Saves the Object like the first createSpeicalObject method but you can give it a Location
+     * Saves the Object like the first createSpecalObject method but you can give it a Location and it will not create the Object
      * @param loc Location
      * @param name Name of the Object
      * @throws ValueExistException Will be thrown if the Object Name is already taken.
@@ -49,18 +49,33 @@ public interface Special<T> {
     void createSpecialObject(Location loc, String name) throws ValueExistException;
 
     /**
-     *
-     * @param Name
-     * @return
-     * @throws ValueNotExistException
+     * Get The Object to manipulate it
+     * @param Name Name of the Object
+     * @return The Object
+     * @throws ValueNotExistException If the Object is'nt saved it will be thrown.
      */
 
     T getSpecialObject(String Name) throws ValueNotExistException;
 
+    /**
+     * Get a Set of all Object
+     * @return a Set of all Object.
+     */
     Set<T> getSpecialObjects();
 
+    /**
+     * Delete a Object
+     * @param name Name of the Object
+     * @throws ValueNotExistException If the Object already not exist or has'nt exist before.
+     */
     void deleteSpecialObject(String name) throws ValueNotExistException;
 
+    /**
+     * Get The Location of the Object
+     * @param name Name of the Object
+     * @return Location of the Object
+     * @throws ValueNotExistException if the Object is'nt saved it will be thrown.
+     */
     Location getSpecialObjectLocation(String name) throws ValueNotExistException;
 
 

@@ -45,11 +45,11 @@ public class CountdownManager {
         diffTime = new HashMap<>();
     }
 
-    //Variable there long is the Cooldown
+    //Variable where long is the Cooldown
     private long Cooldown = 0;
 
     /**
-     * Save all Player with a Countdown
+     * Save all Player with a Countdown this is 0L
      */
 
     public void saveallPlayers() {
@@ -57,24 +57,40 @@ public class CountdownManager {
             if (!Time.containsKey(p.getUniqueId())) {
                 Time.put(p.getUniqueId(), 0L);
                 diffTime.put(p.getUniqueId(), 0L);
-            } else {
-                System.out.println(Time.get(p.getUniqueId()));
             }
-
         }
     }
+
+    /**
+     * Save the Player UUID for a Countdown in a HashMap and set a Value for the Cooldown Variable that is for where long the the Player has to wait
+     * @param PlayerUUID
+     * @param secondsorMinutes
+     */
 
     public void createCountdownforPlayer(UUID PlayerUUID, long secondsorMinutes) {
         Time.put(PlayerUUID, System.currentTimeMillis());
         Cooldown = secondsorMinutes;
     }
 
+    /**
+     * Save the Player UUID in a HashMap for a Cooldown
+     * @param PlayerUUID
+     */
     public void createCountdownforPlayer(UUID PlayerUUID) {
 
         Time.put(PlayerUUID, System.currentTimeMillis());
     }
 
-    public boolean hasPlayeraCountdown(UUID PlayerUUID, boolean seconds) throws WrongValueException {
+    /**
+     * Check if the Player has a Cooldown higher than 0L than he have not it will return false
+     * @param PlayerUUID UUID of the Player
+     * @param seconds Should it calculate in seconds or Minutes if true it calculate in seconds
+     * @return if the Player don't have a Countdown it will return false otherwise true
+     */
+    public boolean hasPlayeraCountdown(UUID PlayerUUID, boolean seconds) throws ValueNotExistException{
+        if(!Time.containsKey(PlayerUUID)){
+           throw new ValueNotExistException();
+        }
         if (Time.get(PlayerUUID) != 0L) {
             if (seconds) {
                 long diff = ((System.currentTimeMillis() - Time.get(PlayerUUID))) / 1000L;
@@ -105,6 +121,11 @@ public class CountdownManager {
     }
 
 
+    /**
+     * Force to remove a Player from the HashMap
+     * @param PlayerUUID UUID of the Player
+     * @throws ValueNotExistException If the Player is'nt saved in the HashMap it will throw this Exception
+     */
     public void removeCountdownfromPlayer(UUID PlayerUUID) throws ValueNotExistException {
         if (!Time.containsKey(PlayerUUID)) {
             throw new ValueNotExistException();
@@ -113,14 +134,28 @@ public class CountdownManager {
         Time.remove(PlayerUUID);
     }
 
+    /**
+     * Set the long of the Cooldown
+     * @param time where long should the Player wait
+     */
     public void setCooldown(long time) {
         this.Cooldown = time;
     }
 
+    /**
+     * Get the number where big the Cooldown is
+     * @return the Number where long the Player should wait.
+     */
     public long getCooldown() {
         return this.Cooldown;
     }
 
+    /**
+     * Return the Difference of the Time where the Player has wait.
+     * @param PlayerUUID UUID from the Player
+     * @return Value of the where the Player wait.
+     * @throws ValueNotExistException If the Player isn't saved in this HashMap it will throw this Exception
+     */
     public long getDifferencefromPlayer(UUID PlayerUUID) throws ValueNotExistException {
         if (Time.containsKey(PlayerUUID)) {
             return diffTime.get(PlayerUUID);

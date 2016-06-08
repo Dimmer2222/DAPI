@@ -43,6 +43,11 @@ public class WorldManager implements WorldGenerator {
     File file;
     FileConfiguration config;
 
+    /**
+     * Create a Object of the Class
+     * @param Path Plugin Folder Path
+     * @param File File Name
+     */
     public WorldManager(String Path, String File){
         file = new File(Path, File);
         config = YamlConfiguration.loadConfiguration(file);
@@ -63,23 +68,28 @@ public class WorldManager implements WorldGenerator {
         save(false);
         World world = Bukkit.createWorld(WorldCreator.name(worldName).environment(environment).type(worldType));
         config.set("World.WorldName." + worldName.toLowerCase(), worldName.toLowerCase());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.pvp", world.getPVP());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.spawn", world.getSpawnLocation().serialize());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".worldFolder", world.getWorldFolder().getName());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.animals", world.getAllowAnimals());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.monster", world.getAllowMonsters());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.difficulty", world.getDifficulty().toString());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.type",world.getWorldType().toString());
-        config.set("World.WorldName." + worldName.toLowerCase() + ".properties.environment", world.getEnvironment().toString());
-        save(true);
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.pvp", world.getPVP());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.spawn", world.getSpawnLocation().serialize());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".worldFolder", world.getWorldFolder().getName());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.animals", world.getAllowAnimals());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.monster", world.getAllowMonsters());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.difficulty", world.getDifficulty().toString());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.type",world.getWorldType().toString());
+          config.set("World.WorldName." + worldName.toLowerCase() + ".properties.environment", world.getEnvironment().toString());
+          save(true);
 
-    }
+      }
 
+
+    /**
+     * Configure the World.
+     * @throws WorldError Then the Plugin don't know a World the exception will be thrown
+     */
     private void setup() throws WorldError{
 
-       //Set<String> set = getWorlds();
+        //Set<String> set = getWorlds();
 
-      if(getWorlds().isEmpty()){
+        if(getWorlds().isEmpty()){
             throw new WorldError();
         }
 
@@ -332,7 +342,9 @@ public class WorldManager implements WorldGenerator {
         save(true);
     }
 
-
+    /**
+     * @param b if it should save and create a File is it true else it creates only a File
+     */
     private void save(boolean b){
         try {
             if (!file.exists()) {
@@ -351,6 +363,11 @@ public class WorldManager implements WorldGenerator {
         return config.get(Path);
     }
 
+    /**
+     * Delete a Directory complete
+     * @param path Path of the Directory
+     * @return if it worked it return true if false otherwise
+     */
     private boolean deleteDirectory(File path) {
         if( path.exists() ) {
             File[] files = path.listFiles();

@@ -45,6 +45,11 @@ public class SpecialBlockManager implements Special<Block> {
     File file;
     FileConfiguration config;
 
+    /**
+     * Create a Object of the Class
+     * @param Path Plugin Folder Path
+     * @param Name File Name
+     */
     public SpecialBlockManager(String Path, String Name) {
         file = new File(Path, Name);
         config = YamlConfiguration.loadConfiguration(file);
@@ -136,7 +141,10 @@ public class SpecialBlockManager implements Special<Block> {
 
     }
 
-
+    /**
+     * This Method is to save and to generate a new File then no one exist.
+     * @param b Disable saving and generate a new File when no File exist by false, by true saving + checking if file exist
+     */
     private void save(boolean b){
         try{
         if(!file.exists()) {

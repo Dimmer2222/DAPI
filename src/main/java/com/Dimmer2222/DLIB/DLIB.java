@@ -32,6 +32,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ *
+ * Should include a Class from the Plugin that use this
+ *
+ */
+
 public interface DLIB {
 
 

@@ -38,6 +38,12 @@ public class Region implements ConfigurationSerializable {
     private World world2 = null;
     private String Name;
 
+    /**
+     * Create a Object of this Class and use the Locations to create min und max values.
+     * @param Name Name of the Region this use my RegionManager Class
+     * @param loc1
+     * @param loc2
+     */
     public Region(String Name , Location loc1, Location loc2){
         this.minx = Math.min(loc1.getBlockX(), loc2.getBlockX());
         this.miny = Math.min(loc1.getBlockY(), loc2.getBlockY());
@@ -51,31 +57,60 @@ public class Region implements ConfigurationSerializable {
 
     }
 
+    /**
+     * Get the min X Value
+     * @return The min X Value
+     */
     public int getminX(){
         return minx;
     }
 
+
+    /**
+     * Get the min Y Value
+     * @return The min Y Value
+     */
     public int getminY(){
         return miny;
 
     }
 
+    /**
+     * Get the min Z Value
+     * @return The min Z Value
+     */
     public int getminZ(){
         return minz;
     }
 
+    /**
+     * Get the max X Value
+     * @return The max X Value
+     */
     public int getmaxX(){
         return maxx;
     }
 
+    /**
+     * Get the max Y Value
+     * @return The max Y Value
+     */
     public int getmaxY(){
         return maxy;
     }
 
+    /**
+     * Get the max Z Value
+     * @return The max Z Value
+     */
     public int getmaxZ(){
         return maxz;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getWorld1(){
         return world.getName();
     }

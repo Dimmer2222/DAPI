@@ -1,6 +1,4 @@
-/**
- * This package will be used for higher Versions as the 0.2 build
- */
+
 
 
 /*
@@ -27,4 +25,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.Dimmer2222.DAPI.VillagerTradeAPI;
+/**
+ * This package will be used for higher Versions as the 0.2 build
+ */
+
+package com.Dimmer2222.DLIB.VillagerTradeAPI;

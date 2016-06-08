@@ -10,7 +10,7 @@ ext{
 
 	
     group = 'com.Dimmer2222.DLIB'
-    version = '0.1.99'
+    version = '0.1.99.01'
 
 
     dependencies {

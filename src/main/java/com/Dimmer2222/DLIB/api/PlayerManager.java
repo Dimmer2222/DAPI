@@ -32,6 +32,11 @@ SOFTWARE.
 
 public class PlayerManager {
 
+    /**
+     * Return a Player by the Name
+     * @param PlayerName Name of the Player
+     * @return The Player
+     */
     public static Player getPlayer(String PlayerName) {
         Player player = null;
         for (Player p : Bukkit.getOnlinePlayers()) {
@@ -41,6 +46,11 @@ public class PlayerManager {
         return player;
     }
 
+    /**
+     * Return a Player that is not online
+     * @param PlayerName Name of the Player
+     * @return a Offline Player
+     */
     public static OfflinePlayer getOfflinePlayer(String PlayerName) {
         OfflinePlayer offlinePlayer = null;
         for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {
@@ -50,6 +60,11 @@ public class PlayerManager {
         return offlinePlayer;
     }
 
+    /**
+     * Get a Player by the UUID
+     * @param PlayerUUID UUID of a Player
+     * @return The Player
+     */
     public static Player getPlayer(UUID PlayerUUID){
         Player player = null;
         for (Player p : Bukkit.getOnlinePlayers()) {
@@ -59,6 +74,11 @@ public class PlayerManager {
         return player;
     }
 
+    /**
+     * Return a Player that is not online by the UUID
+     * @param PlayerUUID UUID of the Player
+     * @return a Offline Player
+     */
     public static OfflinePlayer getOfflinePlayer(UUID PlayerUUID){
         OfflinePlayer offlinePlayer = null;
         for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {
@@ -68,10 +88,20 @@ public class PlayerManager {
         return offlinePlayer;
     }
 
+    /**
+     * Get all Players that are online in a Array
+     * @return A Array of all Players that are online
+     */
+
     public static Player[] getPlayers(){
         Player[] p = (Player[]) Bukkit.getOnlinePlayers().toArray();
         return p;
     }
+
+    /**
+     * Get all Players that are offline in a Array
+     * @return A Array of all Players that are offline
+     */
 
     public static OfflinePlayer[] getOfflinePlayers(){
         return Bukkit.getOfflinePlayers();
