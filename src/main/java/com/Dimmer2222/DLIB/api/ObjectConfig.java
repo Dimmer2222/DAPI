@@ -52,7 +52,7 @@ public class ObjectConfig<O, V> {
      * Save a Object with a Value
      * @param object Object
      * @param value value
-     * @throws ConfigSetException
+     * @throws ConfigSetException Then the Object is already saved.
      */
 
     public void saveObject(O object, V value) throws ConfigSetException{
