@@ -1,1 +1,5 @@
 language: java
+
+script:
+  - bundle exec gradle build
+  - bundle exec gradle javadoc
