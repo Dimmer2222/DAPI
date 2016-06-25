@@ -9,7 +9,7 @@ ext{
 
 
 	
-    group = 'com.Dimmer2222.DLIB'
+    group = 'com.github.Dimmer2222.DLIB'
     version = '0.1.99.1'
 
 
