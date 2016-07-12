@@ -19,16 +19,6 @@ ext{
     }
 
 
-tasks.build.dependsOn('uploadArchives')
-
-    uploadArchives {
-        repositories {
-            flatDir { dirs "build/repo/" }
-        }
-    }
-
-
-
     repositories {
         mavenCentral()
         maven {
