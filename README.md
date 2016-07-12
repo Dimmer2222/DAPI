@@ -11,6 +11,6 @@ Date of the 0.3.0: Coming soon. <br \>
 <br \>
 Get it from https://jitpack.io  <br \>
 Repository: https://jitpack.io <br \>
-Group-ID: com.github.Dimmer2222.DLIB <br \>
+Group-ID: com.github.Dimmer2222 <br \>
 Name: DLIB <br \>
 Version: 0.1.99.1 <br \>
